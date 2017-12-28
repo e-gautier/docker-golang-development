@@ -10,6 +10,7 @@ help:
 
 install: ## install go environement
 	${RUN} mkdir -p /go/src /go/bin
+	${RUN} chmod 777 /go/src
 	${RUN} go get github.com/derekparker/delve/cmd/dlv
 	${RUN} go get github.com/revel/revel
 	${RUN} go get github.com/revel/cmd/revel
@@ -17,5 +18,5 @@ install: ## install go environement
 	${RUN} go get github.com/go-gorp/gorp
 
 revel: ## start revel on a project (eg. make start project=myapp)
-	${D} run --rm -p 80:80 -v "${PWD}"/go:/go golang revel run ${project}
+	${D} run --rm -p 8080:80 -v "${PWD}"/go:/go golang revel run ${project}
 
