@@ -10,7 +10,7 @@ help:
 
 install: ## install go environement
 	${RUN} mkdir -p /go/src /go/bin
-	${RUN} chmod 777 /go/src
+	${RUN} chmod 777 /go
 	${RUN} go get github.com/derekparker/delve/cmd/dlv
 	${RUN} go get github.com/revel/revel
 	${RUN} go get github.com/revel/cmd/revel
@@ -21,4 +21,7 @@ revel: ## start revel on a project (eg. make start project=myapp port=8080)
 	test ${project}                                         
 	test ${port}                                         
 	${D} run --rm -p ${port}:8080 -v "${PWD}"/go:/go golang revel run ${project}
+
+delve: ## start delve (eg. make delve port=8080)
+	${D} run --rm -v "${PWD}"/go:/go --security-opt=seccomp:unconfined golang dlv debug --headless --listen=:${port} --api-version=2 ${project}
 
