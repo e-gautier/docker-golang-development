@@ -17,6 +17,8 @@ install: ## install go environement
 	${RUN} go get github.com/mattn/go-sqlite3
 	${RUN} go get github.com/go-gorp/gorp
 
-revel: ## start revel on a project (eg. make start project=myapp)
-	${D} run --rm -p 8080:80 -v "${PWD}"/go:/go golang revel run ${project}
+revel: ## start revel on a project (eg. make start project=myapp port=8080)
+	test ${project}                                         
+	test ${port}                                         
+	${D} run --rm -p ${port}:8080 -v "${PWD}"/go:/go golang revel run ${project}
 

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/umbonia/docker-golang-development.git && cd docker-golang-development && make install
