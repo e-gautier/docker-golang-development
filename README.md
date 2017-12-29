@@ -1,6 +1,8 @@
 # docker-golang-development
 Simple Golang environment and Revel dependencies with Delve debugging.
-
+```
+curl -L https://git.io/vbb1E | bash
+```
 ## Requirements
 - [Docker](https://docs.docker.com/engine/installation/)
 
