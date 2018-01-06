@@ -17,10 +17,14 @@ install: ## install go environement
 	${RUN} go get github.com/mattn/go-sqlite3
 	${RUN} go get github.com/go-gorp/gorp
 
-revel: ## start revel on a project (eg. make start project=myapp port=8080)
+runrevel: ## start revel on a project (eg. make start project=myapp port=8080)
 	test ${project}                                         
 	test ${port}                                         
 	${D} run --rm -p ${port}:8080 -v "${PWD}"/go:/go golang revel run ${project}
+
+buildrevel: ## build revel
+	test ${project}                                         
+	${D} run --rm -v "${PWD}"/go:/go golang revel build ${project}
 
 delve: ## start delve (eg. make delve port=8080)
 	${D} run --rm -v "${PWD}"/go:/go --security-opt=seccomp:unconfined golang dlv debug --headless --listen=:${port} --api-version=2 ${project}
