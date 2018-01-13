@@ -16,6 +16,7 @@ install: ## install go environement
 	${RUN} go get github.com/revel/cmd/revel
 	${RUN} go get github.com/mattn/go-sqlite3
 	${RUN} go get github.com/go-gorp/gorp
+	${RUN} go get github.com/bradfitz/gomemcache/memcache
 
 runrevel: ## start revel on a project (eg. make start project=myapp port=8080)
 	test ${project}                                         
